@@ -9,7 +9,7 @@ import {
 
 
 import { Subscription } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-detail',
@@ -26,7 +26,8 @@ export class UserDetailComponent implements OnInit, OnDestroy {
   constructor(
     private userService: UsersService,
     private route: ActivatedRoute,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router
   ) {
     this.routeSubscription = this.route.params.subscribe(
       pars => (this.userId = +pars['id'])
@@ -56,4 +57,9 @@ export class UserDetailComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.routeSubscription.unsubscribe();
   }
+
+  public onBack(){
+    this.router.navigate(['/users']);
+  }
+
 }
