@@ -20,7 +20,6 @@
       <table class="table table-bordered">
         <thead>
           <tr>
-            <th>id</th>
             <th>first name</th>
             <th>second name</th>
             <th>deleted</th>
@@ -29,8 +28,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let user of filteredUsers">
-            <td>{{user.id}}</td>
-            <td>{{user.fname}}</td>
+            <td><a [routerLink]="[user.id]"><span class="badge">{{ user.id }}</span></a>{{user.fname}}</td>
             <td>{{user.lname}}</td>
             <td>{{user.isDeleted}}</td>
             <td> <button>delete</button></td>
