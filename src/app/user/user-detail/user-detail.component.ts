@@ -42,7 +42,7 @@ export class UserDetailComponent implements OnInit, OnDestroy {
       isDeleted: [false, [Validators.required]]
     });
 
-    this.userService.getProduct(this.userId)
+    this.userService.getUser(this.userId)
     .subscribe(u => {
       this.user = u;
       this.userForm = this.formBuilder.group({
@@ -60,6 +60,14 @@ export class UserDetailComponent implements OnInit, OnDestroy {
 
   public onBack(){
     this.router.navigate(['/users']);
+  }
+
+  public submit(){
+    let u: user = Object.assign({}, this.userForm.value);
+    let b = this.userService.update(u);
+    if(b){
+      this.userForm.reset();
+    }
   }
 
 }

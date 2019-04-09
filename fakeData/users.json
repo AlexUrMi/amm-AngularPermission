@@ -1,22 +1,22 @@
 {
   "users": [
     {
-      "id" : 1,
-    "fname": "fname1",
-    "lname": "lname1",
-    "isDeleted": false
+      "id": 1,
+      "fname": "fname1",
+      "lname": "lname1",
+      "isDeleted": false
     },
     {
-      "id" : 2,
-    "fname": "fname2",
-    "lname": "lname3",
-    "isDeleted": false
+      "id": 2,
+      "fname": "fname2",
+      "lname": "lname2",
+      "isDeleted": false
     },
     {
-      "id" : 3,
-    "fname": "fname3",
-    "lname": "lname4",
-    "isDeleted": false
+      "id": 3,
+      "fname": "fname3",
+      "lname": "lname3",
+      "isDeleted": false
     }
   ],
   "userGroups": [
