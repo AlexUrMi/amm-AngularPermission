@@ -11,7 +11,7 @@ import { HttpHeaders } from '@angular/common/http';
 })
 export class UsersService {
   private usersUrl = 'http://localhost:3000/users';
-  private putUrl = "http://localhost:3000/users";
+  private putUrl = 'http://localhost:3000/users';
   constructor(private http: HttpClient) {}
 
 
@@ -36,23 +36,25 @@ private httpOptions = {
     );
   }
 
-  add(user: user): number {
-    this.http.post<user>(this.usersUrl, user, this.httpOptions)
+  add(usr: user): number {
+    this.http.post<user>(this.usersUrl, usr, this.httpOptions)
     .pipe(
       catchError(this.handleError)
     );
     return 0;
   }
-  update(user: user): boolean {
-    this.putUrl = this.usersUrl + '/' + user.id;
-    this.http.patch(this.putUrl, user, this.httpOptions)
+  update(usr: user): boolean {
+    this.putUrl = this.usersUrl + '/' + usr.id;
+    this.http.patch(this.putUrl, usr, this.httpOptions)
     .subscribe(d => console.log('put user:' + JSON.stringify(d)),
     e => console.log('error:' + e));
     return true;
   }
 
-  delete(id: string){
-
+  delete(id: string) {
+    const urlDelete = this.usersUrl + '/' + id;
+    this.http.delete(urlDelete, this.httpOptions)
+    .subscribe(v=>console.log('delete user' + JSON.stringify(v)));
   }
 
   private handleError(err) {

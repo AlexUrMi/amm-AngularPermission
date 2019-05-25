@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from 'src/app/services/users.service';
 import { user } from 'src/app/models/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-list',
@@ -9,7 +10,7 @@ import { user } from 'src/app/models/user';
 })
 export class UserListComponent implements OnInit {
 
-  constructor(private usersService: UsersService) { }
+  constructor(private usersService: UsersService, private router: Router) { }
 
   public pageTitle = 'User list';
   private _listFilter: string;
@@ -37,5 +38,10 @@ export class UserListComponent implements OnInit {
   performFilter(filterBy: string): user[] {
     filterBy = filterBy.toLocaleLowerCase();
     return this.users.filter((u: user) => (`${u.id}${u.lname}${u.fname}`).toLocaleLowerCase().indexOf(filterBy) !== -1);
+}
+
+public onDelete(user: user) {
+  this.usersService.delete(user.id);
+  this.router.navigate(['/users']);
 }
 }

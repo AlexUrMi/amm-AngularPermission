@@ -28,10 +28,10 @@
         </thead>
         <tbody>
           <tr *ngFor="let user of filteredUsers">
-            <td><a [routerLink]="[user.id]"><span class="badge">{{ user.id }}</span></a>{{user.fname}}</td>
+            <td><a [routerLink]="[user.id]"><span class="badge">{{ user.id }}</span>{{user.fname}}</a></td>
             <td>{{user.lname}}</td>
             <td>{{user.isDeleted}}</td>
-            <td> <button>delete</button></td>
+            <td> <button (click)="onDelete(user)">delete</button></td>
           </tr>
         </tbody>
       </table>

@@ -58,16 +58,17 @@ export class UserDetailComponent implements OnInit, OnDestroy {
     this.routeSubscription.unsubscribe();
   }
 
-  public onBack(){
+  public onBack() {
     this.router.navigate(['/users']);
   }
 
-  public submit(){
-    let u: user = Object.assign({}, this.userForm.value);
-    let b = this.userService.update(u);
-    if(b){
+  public submit() {
+    const u: user = Object.assign({}, this.userForm.value);
+    const b = this.userService.update(u);
+    if (b) {
       this.userForm.reset();
     }
+    this.onBack();
   }
 
 }
