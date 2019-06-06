@@ -16,7 +16,9 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 ### Fake Server
 
 I'm using json-server to emulate the server. The json data are in file users.json.
-You need start json-server first. In vscode I run a command `json-server --watch ./fakeData/users.json`
+You need start json-server first. In vscode I run a command `json-server --watch ./fakeData/db.json`
+`json-server --watch ./fakeData/db.json --port 3004` to change the default port (3000)
+see more `https://www.npmjs.com/package/json-server`
 
 #### Layout
 

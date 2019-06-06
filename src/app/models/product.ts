@@ -1,4 +1,4 @@
-export interface iproduct {
+export interface IProduct {
   id: string;
   name: string;
   price: number;
@@ -6,7 +6,7 @@ export interface iproduct {
 }
 
 
-export class product implements iproduct {
+export class Product implements IProduct {
   id: string;
   name: string;
   price: number;

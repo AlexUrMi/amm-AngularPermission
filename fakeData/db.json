@@ -35,5 +35,25 @@
       "name": "name3",
       "isDeleted": false
     }
-  ]
+  ],
+   "products": [
+     {
+      "id" : "1",
+      "name" : "product1",
+      "price": 15.5,
+      "isDeleted": false
+     },
+     {
+      "id" : "2",
+      "name" : "product2",
+      "price": 12.2,
+      "isDeleted": false
+     },
+     {
+      "id" : "3",
+      "name" : "product3",
+      "price": 11.3,
+      "isDeleted": false
+     }
+   ]
 }

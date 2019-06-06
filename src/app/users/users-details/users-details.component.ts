@@ -1,24 +1,18 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { UsersService } from 'src/app/services/users.service';
-import { user } from 'src/app/models/user';
-import {
-  Validators,
-  FormGroup,
-  FormBuilder
-} from '@angular/forms';
-
-
+import { User } from 'src/app/models/user';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { UsersService } from 'src/app/services/users.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-user-detail',
-  templateUrl: './user-detail.component.html',
-  styleUrls: ['./user-detail.component.css']
+  selector: 'app-users-details',
+  templateUrl: './users-details.component.html',
+  styleUrls: ['./users-details.component.css']
 })
-export class UserDetailComponent implements OnInit, OnDestroy {
+export class UsersDetailsComponent implements OnInit, OnDestroy {
   public pageTitle = 'User detail:';
-  public user: user;
+  public user: User;
   public userForm: FormGroup;
   private userId: number;
   private routeSubscription: Subscription;
@@ -63,7 +57,7 @@ export class UserDetailComponent implements OnInit, OnDestroy {
   }
 
   public submit() {
-    const u: user = Object.assign({}, this.userForm.value);
+    const u: User = Object.assign({}, this.userForm.value);
     const b = this.userService.update(u);
     if (b) {
       this.userForm.reset();
