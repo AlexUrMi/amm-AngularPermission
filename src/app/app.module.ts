@@ -16,6 +16,7 @@ import { UsersModule } from './users/users.module';
 import { GroupsModule } from './groups/groups.module';
 import { GroupListComponent } from './groups/group-list/group-list.component';
 import { GroupDetailComponent } from './groups/group-detail/group-detail.component';
+import { NavComponent } from './core/nav.component';
 
 
 const usersChildrenRoutes: Routes = [
@@ -42,6 +43,7 @@ const routes: Routes = [
     AppComponent,
     WelcomeComponent,
     NotFoundComponent,
+    NavComponent,
   ],
   imports: [
     FormsModule,
