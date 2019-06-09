@@ -12,38 +12,36 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { SortableModule } from 'ngx-bootstrap/sortable';
 import { WelcomeComponent } from './home/welcome.component';
 import { NotFoundComponent } from './home/not-found.component';
+import { UsersModule } from './users/users.module';
+import { GroupsModule } from './groups/groups.module';
 import { GroupListComponent } from './groups/group-list/group-list.component';
 import { GroupDetailComponent } from './groups/group-detail/group-detail.component';
-import { CoreComponent } from './core/core.component';
-import { UsersDetailsComponent } from './users/users-details/users-details.component';
-import { UsersModule } from './users/users.module';
-import { CoreModule } from './core/core.module';
 
 
-// const childrenRoutes: Routes = [
-//   {path:'users', component: UsersListComponent},
-//   {path: 'groups', component: GroupListComponent},
-//   {path: '', redirectTo: 'users', pathMatch: 'full'}
-// ];
+const usersChildrenRoutes: Routes = [
+  {path: 'list', component: UsersListComponent},
+  {path: ':id', component: UsersListComponent},
+  {path: '', redirectTo: 'list', pathMatch: 'full'}
+];
+
+const groupsChildrenRoutes: Routes = [
+  {path: 'list', component: GroupListComponent},
+  {path: ':id', component: GroupDetailComponent},
+  {path: '', redirectTo: 'list', pathMatch: 'full'}
+];
 
 const routes: Routes = [
-
-  // {path: 'core', component: CoreComponent, children: childrenRoutes},
-  {path: 'core', component: CoreComponent},
-  {path: '', redirectTo: 'core', pathMatch: 'full'},
+  {path: 'users', component: UsersListComponent, children: usersChildrenRoutes},
+  {path: 'groups', component: GroupListComponent, children: groupsChildrenRoutes},
+  {path: 'welcome', component: WelcomeComponent},
+  {path: '', redirectTo: 'welcome', pathMatch: 'full'},
   {path: '**', redirectTo: 'notfound'}
 ];
 @NgModule({
   declarations: [
     AppComponent,
-
-    UsersListComponent,
-    UsersDetailsComponent,
     WelcomeComponent,
     NotFoundComponent,
-    GroupListComponent,
-    GroupDetailComponent,
-    CoreComponent
   ],
   imports: [
     FormsModule,
@@ -51,32 +49,20 @@ const routes: Routes = [
     BrowserModule,
     HttpClientModule,
     UsersModule,
-    RouterModule.forRoot(
-      routes
-      // {path: 'users', component: UserListComponent},
-      // {path: 'users/:id', component: UserDetailComponent},
-      // {path: 'welcome', component: WelcomeComponent},
-      // {path: 'notfound', component: NotFoundComponent},
-      // {path: 'groups', component: GroupListComponent},
-      // {path: 'groups/:id', component: GroupDetailComponent},
-      // {path: '', redirectTo: 'core', pathMatch: 'full'},
-      // {path: 'core', component: CoreComponent, children: childrenRoutes},
-      // {path: '**', redirectTo: 'notfound'}
-
-    ),
     CollapseModule.forRoot(),
     BsDropdownModule.forRoot(),
     ModalModule.forRoot(),
     SortableModule.forRoot(),
-    CoreModule
+    GroupsModule,
+    UsersModule,
+    RouterModule.forRoot(
+      routes
+    )
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent],
   exports: [
-    UsersListComponent,
-    UsersDetailsComponent,
-    GroupListComponent,
-    GroupDetailComponent
+
   ]
 })
 export class AppModule { }
